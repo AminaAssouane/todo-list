@@ -1,3 +1,37 @@
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+
 body {
-  background-color: aquamarine;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: 300px auto;
+  grid-template-rows: 100px auto;
+  grid-template-areas:
+    "header header"
+    "sidebar main";
+}
+
+.header {
+  grid-area: header;
+  background-color: lightcoral;
+  border-bottom: 1px solid #eb5252;
+}
+
+.sidebar {
+  grid-area: sidebar;
+  background-color: #ececec;
+  border-right: 1px solid lightgrey;
+  height: 100vh;
+}
+
+.main {
+  grid-area: main;
+  background-color: white;
 }
