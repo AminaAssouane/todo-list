@@ -1,0 +1,3 @@
+create todo classes maybe in its own module
+     they should have a title, description, dueDate and priority.
+    

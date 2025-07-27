@@ -4,14 +4,19 @@
   box-sizing: border-box;
 }
 
-body {
-  height: 100vh;
-  overflow: hidden;
+@font-face {
+  font-family: "Cocogoose";
+  src: url("./fonts/Cocogoose.ttf");
 }
 
 @font-face {
-  font-family: "Lasters";
-  src: url("./fonts/Lasters.ttf");
+  font-family: "Cocogoose-light";
+  src: url("./fonts/Cocogoose-Light.ttf");
+}
+
+body {
+  height: 100vh;
+  font-family: "Cocogoose-Light";
 }
 
 .container {
@@ -26,34 +31,40 @@ body {
 /* HEADER */
 .header {
   grid-area: header;
-  background-color: #ffc067;
-  border-bottom: 1px solid #f7a838;
-  padding: 17px 70px;
+  background-color: #ffdb29;
+  border-bottom: 10px solid white;
+  padding: 10px 50px;
 }
 
 h1 {
+  font-family: "Cocogoose";
   font-weight: normal;
   font-size: 60px;
-  font-family: "Lasters";
   color: black;
 }
 
 /* SIDEBAR */
 .sidebar {
   grid-area: sidebar;
-  background-color: #ececec;
-  border-right: 1px solid lightgrey;
+  background-color: #fcec9c; /* #ececec; */
+  border-right: 10px solid white;
   height: 100vh;
+  padding-top: 100px;
+
+  display: grid;
+  grid-template-rows: 100px 100px 100px;
+  justify-items: center;
 }
 
 /* MAIN */
 .main {
   grid-area: main;
-  background-color: white;
+  background-color: #fcf5d1;
 }
 
 /* Pseudo-classes */
 .clickable:hover {
   cursor: pointer;
   -webkit-transform: scale(1.07);
+  font-weight: bolder;
 }
