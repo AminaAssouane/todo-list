@@ -9,6 +9,11 @@ body {
   overflow: hidden;
 }
 
+@font-face {
+  font-family: "Lasters";
+  src: url("./fonts/Lasters.ttf");
+}
+
 .container {
   display: grid;
   grid-template-columns: 300px auto;
@@ -18,12 +23,22 @@ body {
     "sidebar main";
 }
 
+/* HEADER */
 .header {
   grid-area: header;
-  background-color: lightcoral;
-  border-bottom: 1px solid #eb5252;
+  background-color: #ffc067;
+  border-bottom: 1px solid #f7a838;
+  padding: 17px 70px;
 }
 
+h1 {
+  font-weight: normal;
+  font-size: 60px;
+  font-family: "Lasters";
+  color: black;
+}
+
+/* SIDEBAR */
 .sidebar {
   grid-area: sidebar;
   background-color: #ececec;
@@ -31,7 +46,14 @@ body {
   height: 100vh;
 }
 
+/* MAIN */
 .main {
   grid-area: main;
   background-color: white;
+}
+
+/* Pseudo-classes */
+.clickable:hover {
+  cursor: pointer;
+  -webkit-transform: scale(1.07);
 }
