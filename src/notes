@@ -1,3 +1,23 @@
-create todo classes maybe in its own module
-     they should have a title, description, dueDate and priority.
+create task class maybe in its own module
+    they should have a title, description, dueDate and priority.
+    they can also be checked et barrés
+    we can also add in which project the to do go into
+
+create project class in its own module
+    a project can have multiple tasks
+    a default project to put all the unassigned tasks in
     
+logic in its own module
+    creating to dos
+    creating projects
+    setting to do as complete by checking them
+    changing to do priority
+
+project display in  its own module
+    view all projects, and all the tasks in a project (+ their title, due date, priority, than click on details for the description)
+    
+    afficher le task as a ligne 
+    barrer le to do when checked
+    deleting the to do when click sur corbeille
+
+kkkkkkkkk

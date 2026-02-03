@@ -26,14 +26,15 @@ body {
   grid-template-areas:
     "header header"
     "sidebar main";
+  gap: 5px;
 }
 
 /* HEADER */
 .header {
   grid-area: header;
   background-color: #ffdb29;
-  border-bottom: 10px solid white;
   padding: 10px 50px;
+  border-radius: 0 0 10px 10px;
 }
 
 h1 {
@@ -47,19 +48,25 @@ h1 {
 .sidebar {
   grid-area: sidebar;
   background-color: #fcec9c; /* #ececec; */
-  border-right: 10px solid white;
   height: 100vh;
   padding-top: 100px;
+  border-radius: 10px;
 
   display: grid;
   grid-template-rows: 100px 100px 100px;
   justify-items: center;
 }
 
+.plus {
+  height: 1rem;
+  width: 1rem;
+}
+
 /* MAIN */
 .main {
   grid-area: main;
   background-color: #fcf5d1;
+  border-radius: 10px;
 }
 
 /* Pseudo-classes */
