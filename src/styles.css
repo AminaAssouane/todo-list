@@ -71,6 +71,13 @@ h1 {
   border-radius: 10px;
 }
 
+.bin-icon,
+.edit-icon {
+  /* This makes the icon match the height of my text */
+  height: 1em;
+  width: 1em;
+}
+
 /* Pseudo-classes */
 .clickable:hover {
   cursor: pointer;
