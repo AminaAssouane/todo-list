@@ -1,4 +1,4 @@
-export class Todo {
+export class Task {
   constructor(title, dueDate, priority, description = "", finished = false) {
     this.title = title;
     this.dueDate = dueDate;

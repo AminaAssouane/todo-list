@@ -1,23 +1,37 @@
-import { Todo } from "./todo.js";
+import { Task } from "./task.js";
 
 export class Project {
   constructor(name) {
     this.name = name;
-    this.todos = [];
+    this.tasks = [];
   }
 
-  // Creates and pushes a todo into a project
-  createTodo(title, dueDate, priority, description) {
-    this.todos.push(new Todo(title, dueDate, priority, description));
+  // Creates and pushes a task into a project
+  createTask(title, dueDate, priority, description) {
+    this.tasks.push(new Task(title, dueDate, priority, description));
   }
 
-  // returns the index of a todo in the todos array
-  getTodoIndex(id) {
-    return this.todos.findIndex((todo) => todo.id === id);
+  // returns the index of a task in the tasks array
+  getTaskIndex(id) {
+    return this.tasks.findIndex((task) => task.id === id);
   }
 
-  // Removes a todo from project
-  removeTodo(id) {
-    this.todos.splice(this.getTodoIndex(id), 1);
+  // Removes a task from project
+  removeTask(id) {
+    this.tasks.splice(this.getTaskIndex(id), 1);
+  }
+
+  // Marking a task as finished or not finished
+  toggleFinish(id) {
+    this.tasks[this.getTaskIndex(id)].finished =
+      !this.tasks[this.getTaskIndex(id)].finished;
+  }
+
+  // Literally updating a task when we click on the modify button
+  updateTask(id, title, dueDate, priority, description) {
+    this.tasks[this.getTaskIndex(id)].title = title;
+    this.tasks[this.getTaskIndex(id)].dueDate = dueDate;
+    this.tasks[this.getTaskIndex(id)].priority = priority;
+    this.tasks[this.getTaskIndex(id)].description = description;
   }
 }
