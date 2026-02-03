@@ -76,6 +76,7 @@ h1 {
   /* This makes the icon match the height of my text */
   height: 1em;
   width: 1em;
+  cursor: pointer;
 }
 
 /* Pseudo-classes */
