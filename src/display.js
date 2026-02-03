@@ -1,6 +1,7 @@
 import * as logic from "./logic.js";
 
 const taskBtn = document.getElementById("addTask");
+const taskSection = document.getElementById("taskSection");
 const projectBtn = document.getElementById("addProject");
 const projectSection = document.getElementById("projectSection");
 
@@ -12,13 +13,24 @@ function renderProjects() {
   logic.projects.forEach((project) => {
     let projectDiv = document.createElement("div");
     projectDiv.classList.add("project-item"); // for styling later
+    projectDiv.classList.add("clickable");
     projectDiv.textContent = project.name;
+    projectDiv.addEventListener("click", () => renderTasks(project));
     projectSection.insertBefore(projectDiv, projectBtn);
   });
 }
 
+function renderTasks(project) {
+  project.tasks.forEach((task) => {
+    let taskDiv = document.createElement("div");
+    taskDiv.classList.add("task-item");
+    taskDiv.textContent = task.title;
+    taskSection.appendChild(taskDiv);
+  });
+}
+
 function addProject() {
-  let projectInput = document.createElement("input");
+  const projectInput = document.createElement("input");
   projectSection.insertBefore(projectInput, projectBtn);
   projectInput.focus();
   projectInput.addEventListener("keydown", (e) => {
