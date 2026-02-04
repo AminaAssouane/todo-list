@@ -67,6 +67,12 @@ function renderTasks(project) {
     flagBtn.innerHTML = flagIcon;
     flagBtn.classList.add("flag-icon");
     // Priority logic
+
+    // If the task already has a priority, update the flag color
+    if (task.priority) {
+      updateFlagColor(flagBtn, task.priority);
+    }
+
     flagBtn.addEventListener("click", (e) => {
       e.stopPropagation(); // prevents instant close
 
