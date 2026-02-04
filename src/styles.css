@@ -71,12 +71,16 @@ h1 {
   border-radius: 10px;
 }
 
-.bin-icon,
-.edit-icon {
+.bin-icon svg,
+.edit-icon svg {
   /* This makes the icon match the height of my text */
   height: 1em;
   width: 1em;
   cursor: pointer;
+}
+
+.finished {
+  text-decoration: line-through;
 }
 
 /* Pseudo-classes */
