@@ -72,7 +72,8 @@ h1 {
 }
 
 .bin-icon svg,
-.edit-icon svg {
+.edit-icon svg,
+.flag-icon svg {
   /* This makes the icon match the height of my text */
   height: 1em;
   width: 1em;
@@ -81,6 +82,44 @@ h1 {
 
 .finished {
   text-decoration: line-through;
+}
+
+/* Dealing with setting the priority of a task */
+.flag-icon {
+  position: relative;
+  cursor: pointer;
+}
+
+.priority-menu {
+  position: absolute;
+  top: 1.5em;
+  right: 0;
+  color: black;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+}
+
+.priority-option {
+  padding: 6px 10px;
+  cursor: pointer;
+}
+
+.priority-option:hover {
+  background: #f0f0f0;
+}
+
+/* Priority colors */
+.flag-icon.Low {
+  color: green;
+}
+.flag-icon.Medium {
+  color: orange;
+}
+.flag-icon.High {
+  color: red;
 }
 
 /* Pseudo-classes */
