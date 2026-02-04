@@ -1,13 +1,20 @@
 import * as logic from "./logic.js";
+import { Project } from "./project.js";
 import { format } from "date-fns";
 
 const taskBtn = document.getElementById("addTask");
 const taskSection = document.getElementById("taskSection");
 const projectBtn = document.getElementById("addProject");
 const projectSection = document.getElementById("projectSection");
+const allTasks = document.getElementById("all-tasks");
+const today = document.getElementById("today");
+const thisWeeK = document.getElementById("this-week");
 
 logic.createProject("Default");
 let currentProject = logic.projects[0];
+
+// Creating a project that holds all the tasks
+let projectAllTasks = new Project("All Tasks");
 
 // Rendering the list of projects in the sidebar
 function renderProjectsSidebar() {
@@ -274,6 +281,12 @@ function addTask(project) {
         taskDateInput.value,
         taskPriorityInput.value,
       );
+      projectAllTasks.createTask(
+        taskTitleInput.value,
+        taskDescriptionInput.value,
+        taskDateInput.value,
+        taskPriorityInput.value,
+      );
       clearTaskInputs();
       renderTasks(project);
     }
@@ -282,6 +295,12 @@ function addTask(project) {
   // When clicking on the add button, we create a new task
   addBtn.addEventListener("click", () => {
     project.createTask(
+      taskTitleInput.value,
+      taskDescriptionInput.value,
+      taskDateInput.value,
+      taskPriorityInput.value,
+    );
+    projectAllTasks.createTask(
       taskTitleInput.value,
       taskDescriptionInput.value,
       taskDateInput.value,
@@ -358,6 +377,7 @@ function addProject() {
 
 projectBtn.addEventListener("click", addProject);
 taskBtn.addEventListener("click", () => addTask(currentProject));
+allTasks.addEventListener("click", () => renderTasks(projectAllTasks));
 
 // Closing the priority menu when clicking anywhere else
 document.addEventListener("click", () => {
