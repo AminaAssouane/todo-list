@@ -28,9 +28,10 @@ export class Project {
   }
 
   // Literally updating a task when we click on the modify button
-  updateTask(id, title, description, dueDate) {
+  updateTask(id, title, description, dueDate, priority) {
     this.tasks[this.getTaskIndex(id)].title = title;
     this.tasks[this.getTaskIndex(id)].description = description;
     this.tasks[this.getTaskIndex(id)].dueDate = dueDate;
+    this.tasks[this.getTaskIndex(id)].priority = priority;
   }
 }
