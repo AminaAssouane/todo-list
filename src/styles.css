@@ -124,6 +124,55 @@ input[type="checkbox"] {
   text-decoration: line-through;
 }
 
+/* Inputs container */
+.inputsContainer {
+  display: flex;
+  flex-direction: column;
+  background-color: #fcec9c;
+  padding: 20px;
+  margin: 10px;
+  border-radius: 10px;
+  gap: 10px;
+}
+
+.btnsDiv {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.descriptionInput {
+  height: 80px;
+}
+
+/* Add a task and cancel buttons */
+.addBtn,
+.cancelBtn {
+  height: 23px;
+  width: 70px;
+  border-radius: 5px;
+  border: none;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.addBtn {
+  background-color: rgb(18, 189, 115);
+}
+
+.cancelBtn {
+  background-color: rgb(216, 39, 39);
+}
+
+.addBtn:hover {
+  background-color: rgb(52, 222, 148);
+}
+
+.cancelBtn:hover {
+  background-color: rgb(247, 45, 45);
+}
+
 /* Dealing with setting the priority of a task */
 .flag-icon {
   position: relative;

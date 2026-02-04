@@ -143,6 +143,9 @@ function updateFlagColor(flagBtn, priority) {
 
 // A function for creating the inputs needed when adding or editing a task
 function createTaskInputs(task = {}) {
+  const taskInputsContainer = document.createElement("section");
+  taskInputsContainer.classList.add("inputsContainer");
+
   const taskTitle = document.createElement("div");
   taskTitle.textContent = "Title : ";
   const taskTitleInput = document.createElement("input");
@@ -152,6 +155,7 @@ function createTaskInputs(task = {}) {
   taskDescription.textContent = "Description : ";
   const taskDescriptionInput = document.createElement("input");
   taskDescriptionInput.value = task.description || "";
+  taskDescriptionInput.classList.add("descriptionInput");
 
   const taskDate = document.createElement("div");
   taskDate.textContent = "Due date : ";
@@ -160,16 +164,19 @@ function createTaskInputs(task = {}) {
   taskDateInput.value = task.dueDate || "";
 
   const btnsDiv = document.createElement("div");
+  btnsDiv.classList.add("btnsDiv");
 
   const addBtn = document.createElement("button");
-  addBtn.textContent = "Add"; // smart text
+  addBtn.classList.add("addBtn");
+  addBtn.textContent = "Add";
 
   const cancelBtn = document.createElement("button");
+  cancelBtn.classList.add("cancelBtn");
   cancelBtn.textContent = "Cancel";
 
   btnsDiv.append(addBtn, cancelBtn);
 
-  return {
+  taskInputsContainer.append(
     taskTitle,
     taskTitleInput,
     taskDescription,
@@ -177,6 +184,13 @@ function createTaskInputs(task = {}) {
     taskDate,
     taskDateInput,
     btnsDiv,
+  );
+
+  return {
+    taskInputsContainer,
+    taskTitleInput,
+    taskDescriptionInput,
+    taskDateInput,
     addBtn,
     cancelBtn,
   };
@@ -186,27 +200,16 @@ function createTaskInputs(task = {}) {
 function addTask(project) {
   if (!project) return alert("Select a project first!");
   const {
-    taskTitle,
+    taskInputsContainer,
     taskTitleInput,
-    taskDescription,
     taskDescriptionInput,
-    taskDate,
     taskDateInput,
-    btnsDiv,
     addBtn,
     cancelBtn,
   } = createTaskInputs();
 
   taskBtn.style.display = "none";
-  taskSection.append(
-    taskTitle,
-    taskTitleInput,
-    taskDescription,
-    taskDescriptionInput,
-    taskDate,
-    taskDateInput,
-    btnsDiv,
-  );
+  taskSection.append(taskInputsContainer);
 
   taskTitleInput.focus();
 
@@ -227,40 +230,23 @@ function addTask(project) {
   });
 
   function clearTaskInputs() {
-    taskTitle.remove();
-    taskTitleInput.remove();
-    taskDescription.remove();
-    taskDescriptionInput.remove();
-    taskDate.remove();
-    taskDateInput.remove();
-    btnsDiv.remove();
+    taskInputsContainer.remove();
     taskBtn.style.display = "block";
   }
 }
 
 function editTask(project, task) {
   const {
-    taskTitle,
+    taskInputsContainer,
     taskTitleInput,
-    taskDescription,
     taskDescriptionInput,
-    taskDate,
     taskDateInput,
-    btnsDiv,
     addBtn,
     cancelBtn,
   } = createTaskInputs(task);
 
   taskBtn.style.display = "none";
-  taskSection.append(
-    taskTitle,
-    taskTitleInput,
-    taskDescription,
-    taskDescriptionInput,
-    taskDate,
-    taskDateInput,
-    btnsDiv,
-  );
+  taskSection.append(taskInputsContainer);
 
   taskTitleInput.focus();
 
@@ -282,13 +268,7 @@ function editTask(project, task) {
   });
 
   function clearTaskInputs() {
-    taskTitle.remove();
-    taskTitleInput.remove();
-    taskDescription.remove();
-    taskDescriptionInput.remove();
-    taskDate.remove();
-    taskDateInput.remove();
-    btnsDiv.remove();
+    taskInputsContainer.remove();
     taskBtn.style.display = "block";
   }
 }
