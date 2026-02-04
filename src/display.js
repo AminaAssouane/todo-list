@@ -37,7 +37,11 @@ function renderTasks(project) {
   project.tasks.forEach((task) => {
     // OUR TASK COMPONENT
     let taskDiv = document.createElement("div");
+    let leftTask = document.createElement("span");
+    let rightTask = document.createElement("span");
     taskDiv.classList.add("task-item");
+    leftTask.classList.add("leftTask");
+    rightTask.classList.add("rightTask");
 
     // CHECKBOX
     let taskCheckbox = document.createElement("input");
@@ -101,7 +105,9 @@ function renderTasks(project) {
     });
 
     // Add everything to the div task component, than insert the div task component before the add task button
-    taskDiv.append(taskCheckbox, taskText, flagBtn, editBtn, binBtn);
+    leftTask.append(taskCheckbox, taskText);
+    rightTask.append(flagBtn, editBtn, binBtn);
+    taskDiv.append(leftTask, rightTask);
     taskSection.insertBefore(taskDiv, taskBtn);
   });
 }

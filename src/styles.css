@@ -69,14 +69,42 @@ h1 {
   grid-area: main;
   background-color: #fcf5d1;
   border-radius: 10px;
+  padding: 30px;
 }
 
+/* The task */
+.task-item {
+  display: flex;
+  justify-content: space-between;
+  background-color: #fcec9c;
+  padding: 10px;
+  margin: 10px;
+  border-radius: 10px;
+}
+
+.task-item:hover {
+  background-color: #ffdb29;
+}
+
+.leftTask,
+.rightTask {
+  display: flex;
+  gap: 10px;
+}
+
+/* The add task button */
+#addTask {
+  margin: 10px;
+  padding: 10px;
+}
+
+/* The icons */
 .bin-icon svg,
 .edit-icon svg,
 .flag-icon svg {
   /* This makes the icon match the height of my text */
-  height: 1em;
-  width: 1em;
+  height: 1.2em;
+  width: 1.2em;
   cursor: pointer;
 }
 
