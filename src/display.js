@@ -83,14 +83,55 @@ function renderTasks(project) {
   });
 }
 
+// A function for creating the inputs needed when adding or editing a task
+function createTaskInputs(task = {}) {
+  const taskTitleInput = document.createElement("input");
+  taskTitleInput.value = task.title || "";
+
+  const taskDescriptionInput = document.createElement("input");
+  taskDescriptionInput.value = task.description || "";
+
+  const taskDateInput = document.createElement("input");
+  taskDateInput.type = "date";
+  taskDateInput.value = task.dueDate || "";
+
+  const addBtn = document.createElement("button");
+  addBtn.textContent = "Add"; // smart text
+
+  const cancelBtn = document.createElement("button");
+  cancelBtn.textContent = "Cancel";
+
+  return {
+    taskTitleInput,
+    taskDescriptionInput,
+    taskDateInput,
+    addBtn,
+    cancelBtn,
+  };
+}
+
 // Adding a task to project
 function addTask(project) {
   if (!project) return alert("Select a project first!");
 
-  const taskInput = document.createElement("input");
+  const {
+    taskTitleInput,
+    taskDescriptionInput,
+    taskDateInput,
+    addBtn,
+    cancelBtn,
+  } = createTaskInputs();
+
   taskBtn.style.display = "none";
-  taskSection.appendChild(taskInput);
-  taskInput.focus();
+  taskSection.append(
+    taskTitleInput,
+    taskDescriptionInput,
+    taskDateInput,
+    addBtn,
+    cancelBtn,
+  );
+  taskTitleInput.focus();
+  /*
   taskInput.addEventListener("keydown", (e) => {
     if (e.key === "Enter") {
       let taskValue = taskInput.value;
@@ -99,7 +140,7 @@ function addTask(project) {
       renderTasks(project);
       taskBtn.style.display = "block";
     }
-  });
+  });*/
 }
 
 function addProject() {

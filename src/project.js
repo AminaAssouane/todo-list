@@ -7,8 +7,8 @@ export class Project {
   }
 
   // Creates and pushes a task into a project
-  createTask(title, dueDate = "", priority = "", description = "") {
-    this.tasks.push(new Task(title, dueDate, priority, description));
+  createTask(title, description = "", dueDate = "", priority = "") {
+    this.tasks.push(new Task(title, description, dueDate, priority));
   }
 
   // returns the index of a task in the tasks array

@@ -1,9 +1,9 @@
 export class Task {
-  constructor(title, dueDate, priority, description = "", finished = false) {
+  constructor(title, description = "", dueDate, priority, finished = false) {
     this.title = title;
+    this.description = description;
     this.dueDate = dueDate;
     this.priority = priority;
-    this.description = description;
     this.finished = finished;
     this.id = crypto.randomUUID();
   }
