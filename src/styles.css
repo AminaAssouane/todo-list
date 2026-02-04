@@ -80,7 +80,7 @@ h2 {
 /* The task */
 .task-item {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
   background-color: #fcec9c;
   padding: 10px;
   margin: 10px;
@@ -91,11 +91,37 @@ h2 {
   background-color: #ffdb29;
 }
 
+.task-main {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.task-details {
+  margin-top: 8px;
+  padding-top: 8px;
+  border-top: 1px solid rgba(0, 0, 0, 0.2);
+  font-size: 0.9rem;
+}
+
 .leftTask,
 .rightTask {
   display: flex;
   align-items: center;
   gap: 10px;
+}
+
+.details {
+  height: 30px;
+  width: 70px;
+  border: 1px solid black;
+  border-radius: 5px;
+  background-color: #fcf5d1;
+  cursor: pointer;
+}
+
+.details:hover {
+  background-color: #fcec9c;
 }
 
 /* The add task button */
@@ -240,8 +266,13 @@ select:focus {
 }
 
 /* Pseudo-classes */
+.clickable {
+  width: fit-content;
+  transition: transform 0.15s ease;
+}
+
 .clickable:hover {
   cursor: pointer;
-  -webkit-transform: scale(1.07);
+  transform: scale(1.05);
   font-weight: bolder;
 }

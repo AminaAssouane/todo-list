@@ -5,7 +5,8 @@ const taskSection = document.getElementById("taskSection");
 const projectBtn = document.getElementById("addProject");
 const projectSection = document.getElementById("projectSection");
 
-let currentProject = null;
+logic.createProject("Default");
+let currentProject = logic.projects[0];
 
 // Rendering the list of projects in the sidebar
 function renderProjectsSidebar() {
@@ -112,10 +113,30 @@ function renderTasks(project) {
       taskDiv.remove();
     });
 
+    // DETAILS
+    let details = document.createElement("button");
+    details.textContent = "Details";
+    details.classList.add("details");
+    let taskDetails = document.createElement("div");
+    taskDetails.textContent = task.description;
+    taskDetails.classList.add("task-details");
+    // details logic
+    details.addEventListener("click", () => {
+      if (taskDetails.isConnected) {
+        taskDetails.remove();
+      } else {
+        taskDiv.append(taskDetails);
+      }
+    });
+
     // Add everything to the div task component, than insert the div task component before the add task button
     leftTask.append(taskCheckbox, taskText);
-    rightTask.append(flagBtn, editBtn, binBtn);
-    taskDiv.append(leftTask, rightTask);
+    rightTask.append(details, flagBtn, editBtn, binBtn);
+    const taskMain = document.createElement("div");
+    taskMain.classList.add("task-main");
+    taskMain.append(leftTask, rightTask);
+    taskDiv.append(taskMain);
+
     taskSection.insertBefore(taskDiv, taskBtn);
   });
 }
@@ -235,6 +256,18 @@ function addTask(project) {
   taskSection.append(taskInputsContainer);
 
   taskTitleInput.focus();
+  taskTitleInput.addEventListener("keydown", (e) => {
+    if (e.key === "Enter") {
+      project.createTask(
+        taskTitleInput.value,
+        taskDescriptionInput.value,
+        taskDateInput.value,
+        taskPriorityInput.value,
+      );
+      clearTaskInputs();
+      renderTasks(project);
+    }
+  });
 
   // When clicking on the add button, we create a new task
   addBtn.addEventListener("click", () => {
