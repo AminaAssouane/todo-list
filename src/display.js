@@ -66,6 +66,8 @@ function renderTasks(project) {
     let editBtn = document.createElement("span");
     editBtn.innerHTML = editIcon;
     editBtn.classList.add("edit-icon");
+    // Edit logic
+    editBtn.addEventListener("click", () => editTask(project, task));
 
     // BIN ICON
     let binBtn = document.createElement("span");
@@ -130,17 +132,75 @@ function addTask(project) {
     addBtn,
     cancelBtn,
   );
+
   taskTitleInput.focus();
-  /*
-  taskInput.addEventListener("keydown", (e) => {
-    if (e.key === "Enter") {
-      let taskValue = taskInput.value;
-      project.createTask(taskValue);
-      taskInput.remove();
-      renderTasks(project);
-      taskBtn.style.display = "block";
-    }
-  });*/
+
+  // When clicking on the add button, we create a new task
+  addBtn.addEventListener("click", () => {
+    project.createTask(
+      taskTitleInput.value,
+      taskDescriptionInput.value,
+      taskDateInput.value,
+    );
+    clearTaskInputs();
+    renderTasks(project);
+  });
+
+  // When clicking the cancel button, we just clear the inputs and show our add task button again
+  cancelBtn.addEventListener("click", () => {
+    clearTaskInputs();
+  });
+
+  function clearTaskInputs() {
+    taskTitleInput.remove();
+    taskDescriptionInput.remove();
+    taskDateInput.remove();
+    addBtn.remove();
+    cancelBtn.remove();
+    taskBtn.style.display = "block";
+  }
+}
+
+function editTask(project, task) {
+  const {
+    taskTitleInput,
+    taskDescriptionInput,
+    taskDateInput,
+    addBtn,
+    cancelBtn,
+  } = createTaskInputs(task);
+
+  taskBtn.style.display = "none";
+  taskSection.append(
+    taskTitleInput,
+    taskDescriptionInput,
+    taskDateInput,
+    addBtn,
+    cancelBtn,
+  );
+
+  taskTitleInput.focus();
+
+  // When clicking on the add button, we update the task
+  addBtn.addEventListener("click", () => {
+    project.updateTask(
+      task.id,
+      taskTitleInput.value,
+      taskDescriptionInput.value,
+      taskDateInput.value,
+    );
+    clearTaskInputs();
+    renderTasks(project);
+  });
+
+  function clearTaskInputs() {
+    taskTitleInput.remove();
+    taskDescriptionInput.remove();
+    taskDateInput.remove();
+    addBtn.remove();
+    cancelBtn.remove();
+    taskBtn.style.display = "block";
+  }
 }
 
 function addProject() {
