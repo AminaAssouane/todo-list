@@ -1,4 +1,5 @@
 import * as logic from "./logic.js";
+import { format } from "date-fns";
 
 const taskBtn = document.getElementById("addTask");
 const taskSection = document.getElementById("taskSection");
@@ -129,9 +130,18 @@ function renderTasks(project) {
       }
     });
 
+    // DATE
+    let taskDateSpan = document.createElement("span");
+    if (task.dueDate) {
+      const taskDateObj = new Date(task.dueDate); // convert string to Date
+      taskDateSpan.textContent = format(taskDateObj, "MMM do");
+      // "Jun 9th", "Feb 23rd"
+      taskDateSpan.classList.add("task-date"); // optional class for styling
+    }
+
     // Add everything to the div task component, than insert the div task component before the add task button
     leftTask.append(taskCheckbox, taskText);
-    rightTask.append(details, flagBtn, editBtn, binBtn);
+    rightTask.append(details, taskDateSpan, flagBtn, editBtn, binBtn);
     const taskMain = document.createElement("div");
     taskMain.classList.add("task-main");
     taskMain.append(leftTask, rightTask);
