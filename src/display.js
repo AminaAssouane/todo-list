@@ -35,13 +35,19 @@ function renderTasks(project) {
   const editIcon = `<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <title></title> <g id="Complete"> <g id="edit"> <g> <path d="M20,16v4a2,2,0,0,1-2,2H4a2,2,0,0,1-2-2V6A2,2,0,0,1,4,4H8" fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path> <polygon fill="none" points="12.5 15.8 22 6.2 17.8 2 8.3 11.5 8 16 12.5 15.8" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></polygon> </g> </g> </g> </g></svg>`;
 
   project.tasks.forEach((task) => {
-    // Our task component
+    // OUR TASK COMPONENT
     let taskDiv = document.createElement("div");
     taskDiv.classList.add("task-item");
 
-    // Checkbox
+    // CHECKBOX
     let taskCheckbox = document.createElement("input");
     taskCheckbox.type = "checkbox";
+    // If the task is finished (checked), we render it as finished
+    if (task.finished) {
+      taskDiv.classList.add("finished");
+      taskCheckbox.checked = true;
+    }
+    // Then we add an event listener on the checkbox to toggle the finish property
     taskCheckbox.addEventListener("change", () => {
       project.toggleFinish(task.id);
       if (taskCheckbox.checked) {
@@ -51,17 +57,17 @@ function renderTasks(project) {
       }
     });
 
-    // Text
+    // TEXT
     let taskText = document.createElement("span");
     taskText.classList.add("task-text");
     taskText.textContent = task.title;
 
-    // Edit icon
+    // EDIT ICON
     let editBtn = document.createElement("span");
     editBtn.innerHTML = editIcon;
     editBtn.classList.add("edit-icon");
 
-    // Bin icon
+    // BIN ICON
     let binBtn = document.createElement("span");
     binBtn.innerHTML = binIcon;
     binBtn.classList.add("bin-icon");
