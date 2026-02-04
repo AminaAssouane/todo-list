@@ -143,15 +143,23 @@ function updateFlagColor(flagBtn, priority) {
 
 // A function for creating the inputs needed when adding or editing a task
 function createTaskInputs(task = {}) {
+  const taskTitle = document.createElement("div");
+  taskTitle.textContent = "Title : ";
   const taskTitleInput = document.createElement("input");
   taskTitleInput.value = task.title || "";
 
+  const taskDescription = document.createElement("div");
+  taskDescription.textContent = "Description : ";
   const taskDescriptionInput = document.createElement("input");
   taskDescriptionInput.value = task.description || "";
 
+  const taskDate = document.createElement("div");
+  taskDate.textContent = "Due date : ";
   const taskDateInput = document.createElement("input");
   taskDateInput.type = "date";
   taskDateInput.value = task.dueDate || "";
+
+  const btnsDiv = document.createElement("div");
 
   const addBtn = document.createElement("button");
   addBtn.textContent = "Add"; // smart text
@@ -159,10 +167,16 @@ function createTaskInputs(task = {}) {
   const cancelBtn = document.createElement("button");
   cancelBtn.textContent = "Cancel";
 
+  btnsDiv.append(addBtn, cancelBtn);
+
   return {
+    taskTitle,
     taskTitleInput,
+    taskDescription,
     taskDescriptionInput,
+    taskDate,
     taskDateInput,
+    btnsDiv,
     addBtn,
     cancelBtn,
   };
@@ -171,22 +185,27 @@ function createTaskInputs(task = {}) {
 // Adding a task to project
 function addTask(project) {
   if (!project) return alert("Select a project first!");
-
   const {
+    taskTitle,
     taskTitleInput,
+    taskDescription,
     taskDescriptionInput,
+    taskDate,
     taskDateInput,
+    btnsDiv,
     addBtn,
     cancelBtn,
   } = createTaskInputs();
 
   taskBtn.style.display = "none";
   taskSection.append(
+    taskTitle,
     taskTitleInput,
+    taskDescription,
     taskDescriptionInput,
+    taskDate,
     taskDateInput,
-    addBtn,
-    cancelBtn,
+    btnsDiv,
   );
 
   taskTitleInput.focus();
@@ -208,31 +227,39 @@ function addTask(project) {
   });
 
   function clearTaskInputs() {
+    taskTitle.remove();
     taskTitleInput.remove();
+    taskDescription.remove();
     taskDescriptionInput.remove();
+    taskDate.remove();
     taskDateInput.remove();
-    addBtn.remove();
-    cancelBtn.remove();
+    btnsDiv.remove();
     taskBtn.style.display = "block";
   }
 }
 
 function editTask(project, task) {
   const {
+    taskTitle,
     taskTitleInput,
+    taskDescription,
     taskDescriptionInput,
+    taskDate,
     taskDateInput,
+    btnsDiv,
     addBtn,
     cancelBtn,
   } = createTaskInputs(task);
 
   taskBtn.style.display = "none";
   taskSection.append(
+    taskTitle,
     taskTitleInput,
+    taskDescription,
     taskDescriptionInput,
+    taskDate,
     taskDateInput,
-    addBtn,
-    cancelBtn,
+    btnsDiv,
   );
 
   taskTitleInput.focus();
@@ -255,11 +282,13 @@ function editTask(project, task) {
   });
 
   function clearTaskInputs() {
+    taskTitle.remove();
     taskTitleInput.remove();
+    taskDescription.remove();
     taskDescriptionInput.remove();
+    taskDate.remove();
     taskDateInput.remove();
-    addBtn.remove();
-    cancelBtn.remove();
+    btnsDiv.remove();
     taskBtn.style.display = "block";
   }
 }
