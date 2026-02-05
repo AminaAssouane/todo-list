@@ -146,7 +146,13 @@ function renderTasks(project, filter = null) {
     editBtn.innerHTML = editIcon;
     editBtn.classList.add("edit-icon");
     // Edit logic
-    editBtn.addEventListener("click", () => editTask(project, task));
+    editBtn.addEventListener("click", () => {
+      // If project is null (we're in "all" or "today" filter), find it
+      const taskProject =
+        project || logic.projects.find((p) => p.tasks.includes(task));
+
+      editTask(taskProject, task);
+    });
 
     // BIN ICON
     let binBtn = document.createElement("span");
