@@ -10,6 +10,8 @@ const allTasks = document.getElementById("all-tasks");
 const today = document.getElementById("today");
 const thisWeeK = document.getElementById("this-week");
 
+logic.loadFromLocalStorage();
+
 logic.createProject("Default");
 let currentProject = logic.projects[0];
 
@@ -148,6 +150,7 @@ function renderTasks(project, filter = null) {
     binBtn.addEventListener("click", () => {
       project.removeTask(task.id);
       taskDiv.remove();
+      logic.saveToLocalStorage();
     });
 
     // DETAILS
@@ -202,6 +205,7 @@ function createPriorityMenu(task, flagBtn) {
       task.priority = level;
       updateFlagColor(flagBtn, level);
       menu.remove();
+      logic.saveToLocalStorage();
     });
 
     menu.appendChild(option);
@@ -310,7 +314,7 @@ function addTask(project) {
         taskDateInput.value,
         taskPriorityInput.value,
       );
-
+      logic.saveToLocalStorage();
       clearTaskInputs();
       renderTasks(project);
     }
@@ -325,6 +329,7 @@ function addTask(project) {
       taskPriorityInput.value,
     );
 
+    logic.saveToLocalStorage();
     clearTaskInputs();
     renderTasks(project);
   });
@@ -365,6 +370,7 @@ function editTask(project, task) {
       taskDateInput.value,
       taskPriorityInput.value,
     );
+    logic.saveToLocalStorage();
     clearTaskInputs();
     renderTasks(project);
   });
