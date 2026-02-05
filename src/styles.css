@@ -53,9 +53,17 @@ h1 {
 
   display: flex;
   flex-direction: column;
-  align-items: center; /* center horizontally */
-  padding-top: 100px;
-  gap: 10px; /* space between items */
+  align-items: flex-start; /* center horizontally */
+  padding-top: 70px;
+  padding-left: 50px;
+  gap: 70px; /* space between items */
+  font-size: 20px;
+}
+
+#project {
+  border-bottom: 1px solid #000000;
+  padding-bottom: 8px;
+  margin-bottom: 12px;
 }
 
 .plus {
