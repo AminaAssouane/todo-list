@@ -12,8 +12,14 @@ const thisWeeK = document.getElementById("this-week");
 
 logic.loadFromLocalStorage();
 
-logic.createProject("Default");
+// If there are no projects loaded, we create a default one
+if (logic.projects.length === 0) {
+  logic.createProject("Default");
+}
+
 let currentProject = logic.projects[0];
+renderProjectsSidebar();
+renderTasks(currentProject);
 
 // Rendering the list of projects in the sidebar
 function renderProjectsSidebar() {
