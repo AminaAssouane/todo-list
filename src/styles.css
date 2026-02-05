@@ -66,6 +66,12 @@ h1 {
   margin-bottom: 12px;
 }
 
+#home {
+  border-bottom: 1px solid #000000;
+  padding-bottom: 8px;
+  margin-bottom: 12px;
+}
+
 .plus {
   height: 1rem;
   width: 1rem;
